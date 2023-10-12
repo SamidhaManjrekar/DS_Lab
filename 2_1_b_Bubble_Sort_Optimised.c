@@ -2,10 +2,10 @@
 int main()
 {
 	int i,j,temp,n, flag, count=0, swap=0;
-	printf ("enter the number of array elements:");
+	printf ("Enter the number of array elements: ");
 	scanf("%d", &n);
 	int arr[100];
-	printf("enter the array elements: ");
+	printf("Enter the array elements: \n");
 	for (i=0; i<n; i++)
 	{
 		scanf("%d", &arr[i]);
@@ -31,7 +31,7 @@ int main()
 		}
 	}
 	
-	printf ("the sorted array is:");
+	printf ("The sorted array is: ");
 	for (i=0; i<n; i++)
 	{
 		printf("%d ", arr[i]);
