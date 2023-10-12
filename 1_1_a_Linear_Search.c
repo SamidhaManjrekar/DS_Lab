@@ -3,7 +3,6 @@
 int main()
 
 {
-
    int arr[100], key, i, num, count = 0;
    printf("Enter number of elements : ");
    scanf("%d", &num);
@@ -20,6 +19,7 @@ int main()
       if (arr[i] == key) 
       {
          count++;
+         break;
       }
 
    }
@@ -28,7 +28,7 @@ int main()
       printf("%d key is not present in the array.\n", key);
 
    else
-      printf("%d is present %d times in the array.\n", key, count);    
+      printf("%d is present at position %d.\n", key, i+1);    
 
    return 0;
 
