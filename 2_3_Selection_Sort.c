@@ -18,25 +18,6 @@ void selection_sort(int arr[], int n)
     }
 }
 
-void selectionSortDescending(int arr[], int n) 
-{
-    for (int i = 0; i < n - 1; i++) 
-    {
-        int max_index = i;
-        for (int j = i + 1; j < n; j++) 
-        {
-            if (arr[j] > arr[max_index]) 
-            {
-                max_index = j;
-            }
-        }
-        // Swap the maximum element with the current element
-        int temp = arr[i];
-        arr[i] = arr[max_index];
-        arr[max_index] = temp;
-    }
-}
-
 int main() {
     int n;
 
@@ -50,17 +31,9 @@ int main() {
         scanf("%d", &arr[i]);
     }
 
-    // Call selection_sort to sort the array
     selection_sort(arr, n);
 
-    printf("\nascending array:\n");
-    for (int i = 0; i < n; i++) {
-        printf("%d ", arr[i]);
-    }
-
-    selectionSortDescending(arr, n);
-
-    printf("\ndecending array:\n");
+    printf("\nSorted array:\n");
     for (int i = 0; i < n; i++) {
         printf("%d ", arr[i]);
     }
