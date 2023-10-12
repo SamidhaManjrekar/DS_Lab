@@ -1,16 +1,16 @@
 #include <stdio.h>
 
 int binary_search_recursive(int arr[], int l, int h, int k) {
-    while (l <= h) {
+    if (l <= h) {
         int mid = (l + h) / 2;
         if (arr[mid] == k)
             return mid;
         else if (k < arr[mid])
-            binary_search_recursive(arr, l, mid-1, k);
+            return binary_search_recursive(arr, l, mid - 1, k); 
         else
-            binary_search_recursive(arr, mid+1, h, k);
+            return binary_search_recursive(arr, mid + 1, h, k); 
     }
-    return -1;
+    return -1; 
 }
 
 int main() {
@@ -25,7 +25,6 @@ int main() {
     printf("Enter a number that you would like to search: ");
     scanf("%d", &key);
 
-    // Bubble sort to sort the array
     for (i = 0; i < num; i++) {
         for (j = 0; j < num - i - 1; j++) {
             if (arr[j] > arr[j + 1]) {
@@ -41,13 +40,13 @@ int main() {
         printf("%d ", arr[i]);
     }
 
-    int l = 0, h = num - 1; 
+    int l = 0, h = num - 1;
 
     int result = binary_search_recursive(arr, l, h, key);
     if (result == -1) {
         printf("\nNot in array");
     } else {
-        printf("\nPresent in array at %d position", result+1);
+        printf("\nPresent in array at %d position", result + 1);
     }
     return 0;
 }
