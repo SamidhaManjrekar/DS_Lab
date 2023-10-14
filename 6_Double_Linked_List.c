@@ -26,7 +26,7 @@ void display_linked_list()
 void create_linked_list(int i)
 {
     struct node *newnode, *temp;
-    printf("\nEnter the data: ");
+    printf("\nEnter the data: \n");
     for(int j=0; j<i; j++)
     {
     newnode = (struct node*) malloc (sizeof(struct node));
@@ -49,6 +49,7 @@ void create_linked_list(int i)
     }
     printf("\nThe linked list created: ");
     display_linked_list();
+    printf("\n");
 }
 
 void add_to_start()
@@ -70,7 +71,7 @@ void add_to_start()
     }
     printf("\nThe likned list after a new node is added to the beginning: ");
     display_linked_list();
-
+    printf("\n");
 }
 
 void add_to_end()
@@ -92,7 +93,7 @@ void add_to_end()
 
     printf("\nThe likned list after a new node is added to the end: ");
     display_linked_list();
-
+    printf("\n");
 }
 
 void add_to_position()
@@ -149,6 +150,7 @@ void add_to_position()
         printf("\nThe linked list after a new node is added to the given position: ");
         display_linked_list();
     }
+    printf("\n");
 }
 
 
@@ -170,7 +172,7 @@ void delete_from_start()
 
     printf("\nThe linked list after deleting a node fron the start: ");
     display_linked_list();
-    
+    printf("\n");
 }
 
 void delete_from_end()
@@ -194,6 +196,7 @@ void delete_from_end()
     }
     printf("\nThe linked list after deleting a node fron the start: ");
     display_linked_list();
+    printf("\n");
 }
 
 void delete_from_position()
@@ -217,7 +220,7 @@ void delete_from_position()
     }
     else 
     {
-        while (i< pos-1)
+        while (i< pos)
         {
             temp = temp -> next;
             i++;
@@ -230,80 +233,7 @@ void delete_from_position()
 
     printf("\nThe linked list after deleting a node fron a given position: ");
     display_linked_list();
-
-}
-
-void traverse_left_to_right()
-{
-    struct node *temp;
-    temp = head;
-    printf("\n The contents of List: ");
-    if(head == NULL )
-        printf("\n Empty List");
-    else
-    {
-        while(temp != NULL)
-        {
-            printf("%d ", temp -> data);
-            temp = temp -> next;
-        }
-    }
-
-    printf("\nThe linked list after traversing letf to right: ");
-    display_linked_list();
-}
-
-void traverse_right_to_left()
-{
-    struct node *temp;
-    temp = head;
-    printf("\n The contents of List: ");
-    if (head == NULL)
-        printf("\n Empty List");
-    else
-    {
-        while (temp -> next != NULL)
-        {
-           temp = temp->next;
-        } 
-            
-        while (temp != NULL)
-        {
-            printf("%d ", temp->data);
-            temp = temp->prev;
-        }
-    }
-}
-
-void search_node()
-{
-    struct node *temp;
-    int key, pos=1, flag = 0 ;
-    printf ("\nEnter the element to be found: ");
-    scanf("%d", &key);
-
-    temp = head;
-    while (temp != NULL)
-    {
-        if (temp -> data == key)
-        {
-            flag = 1;
-            break;
-        }
-        
-        temp = temp -> next; 
-        pos ++;
-    }
-        
-    if (flag == 0 )
-    {            
-        printf ("\nThe given element is not present in the list");
-    }
-    else 
-    {
-        printf ("\nThe element is present in the list at the %d position", pos);
-    }
-    
+    printf("\n");
 }
 
 void reverse_list()
@@ -324,22 +254,18 @@ void reverse_list()
 
     printf("\nThe linked list after reversing: ");
     display_linked_list();
+    printf("\n");
 }
 
 
 void concatenate_linked_list()
 {
     struct node *temp, *newnode, *head2 = NULL;
-    int i, j;
-    
-    printf("\nTo create the first linked list: ");
-    printf("\nEnter the number of nodes for the first linked list: ");
-    scanf("%d", &i);
-    create_linked_list(i);
-
+    int j;
     printf("\nTo create the second linked list: ");
     printf("\nEnter the number of nodes for the second linked list: ");
     scanf("%d", &j);
+    printf("Enter data: \n");
     for (int k = 0; k < j; k++)
     {
         newnode = (struct node *)malloc(sizeof(struct node));
@@ -358,16 +284,12 @@ void concatenate_linked_list()
         }
     }
     
-    
     if (head == NULL) 
     {
-        
-        printf("\nFirst list is empty. Concatenating second list.\n");
         head = head2;
     } 
     else 
     {
-       
         temp = head;
         while (temp->next != NULL) 
         {
@@ -385,41 +307,16 @@ void concatenate_linked_list()
 
     printf("\nThe linked list after concatenation: ");
     display_linked_list();
-
-}
-
-void sort_linked_list()
-{
-    struct node *ptr, *nextnode;
-    int temp;
-    ptr = head;
-    while (ptr -> next != NULL)
-    {
-        nextnode = ptr -> next;
-        while (nextnode != NULL)
-        {
-            if (ptr -> data > nextnode -> data)
-            {
-                temp = ptr -> data;
-                ptr -> data = nextnode ->data;
-                nextnode ->data = temp;
-            }
-            nextnode = nextnode -> next;
-        }
-        ptr = ptr -> next;
-    }
-
-    printf("\nThe linked list after sorting: ");
-    display_linked_list();
+    printf("\n");
 }
 
 int main()
 { 
-    int choice, continueChoice,i;
+    int choice, i;
     printf("\n--------------------------------Welcome--------------------------------\n");
     printf("This is a program to perform various operations on a single linked list.\n");
 
-    do {
+    while(1) {
         printf("\nPress 1 to create a linked list.\n");
         printf("Press 2 to add a node to the beginning of the linked list.\n");
         printf("Press 3 to add a node to the end of the linked list.\n");
@@ -428,10 +325,9 @@ int main()
         printf("Press 6 to delete a node from the end of the linked list.\n");
         printf("Press 7 to delete a node from a position of your choice in the linked list.\n");
         printf("Press 8 to display the linked list.\n");
-        printf("Press 9 to search for an element in the linked list.\n");
-        printf("Press 10 to sort the list.\n");
-        printf("Enter 11 to reverse the list.\n");
-        printf("Enter 12 to concatenate two lists.\n");
+        printf("Press 9 to reverse the list.\n");
+        printf("Press 10 to concatenate two lists.\n");
+        printf("Press 11 to exit program.\n");
         printf("Enter your choice: ");
         scanf("%d", &choice);
 
@@ -441,10 +337,8 @@ int main()
             printf("Enter the number of nodes you want to add: ");
             scanf("%d",&i);
             create_linked_list(i);
-
             break;
 
-            
             case 2:
             printf ("\nTo add a node to the beginning of the linked list :-\n");
             add_to_start();
@@ -481,36 +375,23 @@ int main()
             break;
 
             case 9:
-            printf("\nTo search for an element in the linked list :-\n");
-            search_node();
-            break;
-
-            case 10:
-            printf("\nTo sort the entered list:-\n");
-            sort_linked_list();
-            break;
-
-            case 11:
             printf("\nTo reverse the list:-");
             reverse_list();
             break;
 
-            case 12:
+            case 10:
             printf("To concatenate the list:-");
             concatenate_linked_list();
             break;
+
+            case 11:
+            printf("Exiting program...");
+            exit(0);
 
             default:
             printf("Invalid choice!\n");
             break;
         }
-
-        printf("\n\nDo you want to perform any other operation? (1 for YES, 0 for NO) ");
-        scanf("%d", &continueChoice);
-    } while (continueChoice == 1);
-
-    printf("Exiting program...");
-
-    
-    
+    }
+    return 0;
 }
